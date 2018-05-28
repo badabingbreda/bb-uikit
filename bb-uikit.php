@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Beaver Builder UI Kit
  * Plugin URI: http://www.badabing.nl
- * Description: UIkit 3 beta for Beaver Builder
- * Version: 1.0.0
+ * Description: UIkit 3 beta rc3 for Beaver Builder
+ * Version: 1.0.0 rc3
  * Author: BadabingBreda
  * Domain Path: languages/
  * Text Domain: bb-ui-kit
