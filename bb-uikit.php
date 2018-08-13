@@ -25,7 +25,7 @@ add_action( 'wp_enqueue_scripts', 'beaver_ui_kit_scripts_styles', 99, 1 );
  * @param bool $in_footer (optional) Whether to enqueue the script before </head> or before </body>
  */
 function beaver_ui_kit_scripts_styles() {
-	wp_enqueue_script( 'bb-uikitjs', BBUIKIT_URL.'/vendor/uikit/js/uikit.js', false, BBUIKIT_VERSION , false );
+	wp_enqueue_script( 'bb-uikitjs', BBUIKIT_URL.'/vendor/uikit/js/uikit.min.js', false, BBUIKIT_VERSION , false );
 	wp_enqueue_script( 'bb-uikiticons', BBUIKIT_URL.'/vendor/uikit/js/uikit-icons.min.js', false, BBUIKIT_VERSION , false );
 	wp_enqueue_style( 'bb-uikitcss', BBUIKIT_URL.'/vendor/uikit/css/bbuikit.theme.min.css', false, BBUIKIT_VERSION , 'all' );
 }
