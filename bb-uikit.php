@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Beaver Builder UI Kit
  * Plugin URI: http://www.badabing.nl
- * Description: UIkit 3 beta rc4 for Beaver Builder
- * Version: 1.0.0 rc4
+ * Description: UIkit 3.0.0-rc10 for Beaver Builder
+ * Version: 1.0.10
  * Author: BadabingBreda
  * Domain Path: languages/
  * Text Domain: bb-ui-kit
@@ -11,7 +11,7 @@
  */
 
 define( 'BBUIKIT_URL' 		, plugins_url( '/', __FILE__ ) );
-define( 'BBUIKIT_VERSION' 		, '1.0.0' );
+define( 'BBUIKIT_VERSION' 		, '1.0.10' );
 
 
 add_action( 'wp_enqueue_scripts', 'beaver_ui_kit_scripts_styles', 99, 1 );
@@ -27,6 +27,6 @@ add_action( 'wp_enqueue_scripts', 'beaver_ui_kit_scripts_styles', 99, 1 );
 function beaver_ui_kit_scripts_styles() {
 	wp_enqueue_script( 'bb-uikitjs', BBUIKIT_URL.'/vendor/uikit/js/uikit.min.js', false, BBUIKIT_VERSION , false );
 	wp_enqueue_script( 'bb-uikiticons', BBUIKIT_URL.'/vendor/uikit/js/uikit-icons.min.js', false, BBUIKIT_VERSION , false );
-	wp_enqueue_style( 'bb-uikitcss', BBUIKIT_URL.'/vendor/uikit/css/uikit.css', false, BBUIKIT_VERSION , 'all' );
+	wp_enqueue_style( 'bb-uikitcss', BBUIKIT_URL.'/vendor/uikit/css/bbuikit.min.css', false, BBUIKIT_VERSION , 'all' );
 }
 
