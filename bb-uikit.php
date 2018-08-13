@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Beaver Builder UI Kit
  * Plugin URI: http://www.badabing.nl
- * Description: UIkit 3.0.0-rc10 for Beaver Builder
- * Version: 1.0.10
+ * Description: UIkit 3.0.0-rc11 for Beaver Builder with AlekVolsk's width-ex for extended col support (up to 30)
+ * Version: 1.0.11
  * Author: BadabingBreda
  * Domain Path: languages/
  * Text Domain: bb-ui-kit
@@ -11,7 +11,7 @@
  */
 
 define( 'BBUIKIT_URL' 		, plugins_url( '/', __FILE__ ) );
-define( 'BBUIKIT_VERSION' 		, '1.0.10' );
+define( 'BBUIKIT_VERSION' 		, '1.0.11.1' );
 
 
 add_action( 'wp_enqueue_scripts', 'beaver_ui_kit_scripts_styles', 99, 1 );
@@ -25,8 +25,8 @@ add_action( 'wp_enqueue_scripts', 'beaver_ui_kit_scripts_styles', 99, 1 );
  * @param bool $in_footer (optional) Whether to enqueue the script before </head> or before </body>
  */
 function beaver_ui_kit_scripts_styles() {
-	wp_enqueue_script( 'bb-uikitjs', BBUIKIT_URL.'/vendor/uikit/js/uikit.min.js', false, BBUIKIT_VERSION , false );
+	wp_enqueue_script( 'bb-uikitjs', BBUIKIT_URL.'/vendor/uikit/js/uikit.js', false, BBUIKIT_VERSION , false );
 	wp_enqueue_script( 'bb-uikiticons', BBUIKIT_URL.'/vendor/uikit/js/uikit-icons.min.js', false, BBUIKIT_VERSION , false );
-	wp_enqueue_style( 'bb-uikitcss', BBUIKIT_URL.'/vendor/uikit/css/bbuikit.min.css', false, BBUIKIT_VERSION , 'all' );
+	wp_enqueue_style( 'bb-uikitcss', BBUIKIT_URL.'/vendor/uikit/css/bbuikit.theme.min.css', false, BBUIKIT_VERSION , 'all' );
 }
 
