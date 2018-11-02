@@ -14,7 +14,7 @@ Edited components/import.less and theme/import.less files are needed, so create 
 
 
 /********************************************************************************************
- * base.less EDIT OUT
+ * components/base.less EDIT OUT
  * only styles that need to be commented out are listed
  ********************************************************************************************/
 
@@ -64,7 +64,7 @@ h6, .uk-h6 {
 
 
 /********************************************************************************************
- * _import.less CHANGES
+ * components/_import.less CHANGES
  * add more grid widths by inlcuding AlekVolsk's width-extension
  ********************************************************************************************/
 
@@ -74,6 +74,16 @@ REMOVE line:
 ADD line (replace the line above):
 @import "../../../AlekVolsk/uikit-ex/width-ex.less";
 
+/********************************************************************************************
+ * theme/_import.less CHANGES
+ * add more grid widths by inlcuding AlekVolsk's width-extension
+ ********************************************************************************************/
+
+REMOVE line:
+@import "width.less";
+
+ADD line (replace the line above):
+@import "../../../AlekVolsk/uikit-ex/width-ex.less";
 
 
 
