@@ -152,18 +152,17 @@ a:hover,
  ========================================================================== */
 
 /*
- * 1. Remove the bottom border in Chrome 57-.
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ * 1. Add an underline text decoration in Safari, Edge and IE.
+ * 2. Add `dotted` style in Safari.
+ * Note: The shorthand declaration `underline dotted` is not supported in Safari, Edge and IE.
  */
 
 abbr[title] {
     /* 1 */
-    border-bottom: none;
-    /* 2 */
     text-decoration: underline;
-    text-decoration: underline dotted;
+    /* 2 */
+    -webkit-text-decoration-style: dotted;
 }
-
 
 /*
  * Add the correct font weight in Chrome, Edge, and Safari.
@@ -259,10 +258,10 @@ svg,
 video { vertical-align: middle; }
 
 /*
- * Responsiveness
- * 1. Set a maximum width
- * 2. Auto scale the height. Only needed if `height` attribute is present
- * 2. Corrects `max-width` behavior if padding and border are used
+ * 1. Add responsiveness.
+ * 2. Auto-scale the height. Only needed if `height` attribute is present.
+ * 3. Corrects responsive `max-width` behavior if padding and border are used.
+ * 4. Exclude SVGs for IE11 because they don't preserve their aspect ratio.
  */
 
 audio,
@@ -277,6 +276,17 @@ video {
     box-sizing: border-box;
 }
 
+/* 4 */
+@supports (display: block) {
+
+   svg {
+        max-width: 100%;
+        height: auto;
+        box-sizing: border-box;
+    }
+
+}
+
 /*
  * Hide the overflow in IE.
  */
@@ -289,6 +299,13 @@ svg:not(:root) { overflow: hidden; }
  */
 
 img:not([src]) { visibility: hidden; }
+
+/*
+ * Iframe
+ * Remove border in all browsers
+ */
+
+iframe { border: 0; }
 
 
 /* Block elements
@@ -502,12 +519,6 @@ pre code { font-family: @base-pre-font-family; }
 /* Selection pseudo-element
  ========================================================================== */
 
-::-moz-selection {
-    background: @base-selection-background;
-    color: @base-selection-color;
-    text-shadow: none;
-}
-
 ::selection {
     background: @base-selection-background;
     color: @base-selection-color;
@@ -541,12 +552,6 @@ summary { display: list-item; }
 template { display: none; }
 
 
-/* Iframe
- ========================================================================== */
-
-iframe { border: 0; }
-
-
 /* Pass media breakpoints to JS
  ========================================================================== */
 
@@ -554,11 +559,17 @@ iframe { border: 0; }
  * Breakpoints
  */
 
-.var-media-s::before  { content: '@{breakpoint-small}'; }
-.var-media-m::before  { content: '@{breakpoint-medium}'; }
-.var-media-l::before  { content: '@{breakpoint-large}'; }
-.var-media-xl::before { content: '@{breakpoint-xlarge}'; }
+.uk-breakpoint-s::before  { content: '@{breakpoint-small}'; }
+.uk-breakpoint-m::before  { content: '@{breakpoint-medium}'; }
+.uk-breakpoint-l::before  { content: '@{breakpoint-large}'; }
+.uk-breakpoint-xl::before { content: '@{breakpoint-xlarge}'; }
 
+:root {
+    --uk-breakpoint-s: @breakpoint-small;
+    --uk-breakpoint-m: @breakpoint-medium;
+    --uk-breakpoint-l: @breakpoint-large;
+    --uk-breakpoint-xl: @breakpoint-xlarge;
+}
 
 // Hooks
 // ========================================================================

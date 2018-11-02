@@ -79,48 +79,58 @@ ADD line (replace the line above):
 
 /********************************************************************************************
  * CHANGES components/form.less
- * Needs an extra directory traversal, ../ becomes ../../
+ * Needs one less extra directory traversal, ../../ becomes ../
  * Line # 104-107
  ********************************************************************************************/
 
-@internal-form-select-image:                     "../../images/backgrounds/form-select.svg";
-@internal-form-radio-image:                      "../../images/backgrounds/form-radio.svg";
-@internal-form-checkbox-image:                   "../../images/backgrounds/form-checkbox.svg";
-@internal-form-checkbox-indeterminate-image:     "../../images/backgrounds/form-checkbox-indeterminate.svg";
+@internal-form-select-image:                     "../images/backgrounds/form-select.svg";
+@internal-form-radio-image:                      "../images/backgrounds/form-radio.svg";
+@internal-form-checkbox-image:                   "../images/backgrounds/form-checkbox.svg";
+@internal-form-checkbox-indeterminate-image:     "../images/backgrounds/form-checkbox-indeterminate.svg";
 
 
 
 
 /********************************************************************************************
  * CHANGES components/divider.less
- * Needs an extra directory traversal, ../ becomes ../../
+ * Needs one less extra directory traversal, ../../ becomes ../
  * Line # 24
  ********************************************************************************************/
 
-@internal-divider-icon-image:                   "../../images/backgrounds/divider-icon.svg";
+@internal-divider-icon-image:                   "../images/backgrounds/divider-icon.svg";
 
 
 
 
 /********************************************************************************************
  * CHANGES components/list.less
- * Needs an extra directory traversal, ../ becomes ../../
+ * Needs one less extra directory traversal, ../../ becomes ../
  * Line # 39
  ********************************************************************************************/
 
-@internal-list-bullet-image:                    "../../images/backgrounds/list-bullet.svg";
+@internal-list-bullet-image:                    "../images/backgrounds/list-bullet.svg";
 
 
 
 
 /********************************************************************************************
  * CHANGES components/nav.less
- * Needs an extra directory traversal, ../ becomes ../../
+ * Needs one less extra directory traversal, ../../ becomes ../
  * Line # 67-68
  ********************************************************************************************/
 
-@internal-nav-parent-close-image:               "../../images/backgrounds/nav-parent-close.svg";
-@internal-nav-parent-open-image:                "../../images/backgrounds/nav-parent-open.svg";
+@internal-nav-parent-close-image:               "../images/backgrounds/nav-parent-close.svg";
+@internal-nav-parent-open-image:                "../images/backgrounds/nav-parent-open.svg";
+
+
+/********************************************************************************************
+ * CHANGES theme/accordion.less
+ * Needs one less extra directory traversal, ../../ becomes ../
+ * Line # 15-16
+ ********************************************************************************************/
+
+@internal-accordion-open-image:                "../images/backgrounds/accordion-open.svg";
+@internal-accordion-close-image:               "../images/backgrounds/accordion-close.svg";
 
 
 /********************************************************************************************
