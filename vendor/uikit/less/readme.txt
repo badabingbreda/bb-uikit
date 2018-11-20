@@ -61,7 +61,33 @@ h6, .uk-h6 {
 }
 
 
+/********************************************************************************************
+ * components/close.less ADD LINE
+ * add position: absolute;
+ ********************************************************************************************/
 
+
+/* Hover + Focus */
+.uk-close:hover,
+.uk-close:focus {
+    color: @close-hover-color;
+    outline: none;
+    position: absolute;         /* THIS LINE */
+    .hook-close-hover;
+}
+
+/********************************************************************************************
+ * components/modal.less ADD FOLLOWING LINES
+ * add extra CSS style for .uk-modal-close-default:focus
+ ********************************************************************************************/
+
+
+/*
+ * Focus
+ */
+.uk-modal-close-default:focus {
+    top: @modal-close-position;
+}
 
 /********************************************************************************************
  * components/_import.less CHANGES

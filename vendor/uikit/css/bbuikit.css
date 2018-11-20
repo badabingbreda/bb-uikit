@@ -630,6 +630,15 @@ a.uk-link-reset:hover,
   border-top: 1px solid #e5e5e5;
   vertical-align: top;
 }
+/* Vertical
+ ========================================================================== */
+.uk-divider-vertical {
+  width: 1px;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  border-left: 1px solid #e5e5e5;
+}
 /* ========================================================================
    Component: List
  ========================================================================== */
@@ -693,6 +702,7 @@ a.uk-link-reset:hover,
 }
 /*
  * Bullet
+ * 1. Reset display `table` which causes issues in combination with multi column layouts.
  */
 .uk-list-bullet > li {
   position: relative;
@@ -708,7 +718,8 @@ a.uk-link-reset:hover,
   background-image: url("../images/backgrounds/list-bullet.svg");
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  float: left;
+  /* 1 */
+  display: block;
 }
 /* Size modifier
  ========================================================================== */
@@ -986,14 +997,11 @@ button.uk-icon:not(:disabled) {
 }
 /*
  * Set the fill and stroke color of all SVG elements to the current text color
- * 1. Fix for uppercase attribute names in Edge. Will be fixed in Windows 10 builds 16251+
  */
-.uk-icon [fill*='#']:not(.uk-preserve),
-.uk-icon [FILL*='#']:not(.uk-preserve) {
+.uk-icon:not(.uk-preserve) [fill*='#']:not(.uk-preserve) {
   fill: currentcolor;
 }
-.uk-icon [stroke*='#']:not(.uk-preserve),
-.uk-icon [STROKE*='#']:not(.uk-preserve) {
+.uk-icon:not(.uk-preserve) [stroke*='#']:not(.uk-preserve) {
   stroke: currentcolor;
 }
 /*
@@ -1364,13 +1372,13 @@ button.uk-icon:not(:disabled) {
 /*
  * Placeholder
  */
-.uk-input:-ms-input-placeholder {
+.uk-input::-ms-input-placeholder {
   color: #999999 !important;
 }
 .uk-input::placeholder {
   color: #999999;
 }
-.uk-textarea:-ms-input-placeholder {
+.uk-textarea::-ms-input-placeholder {
   color: #999999 !important;
 }
 .uk-textarea::placeholder {
@@ -1724,15 +1732,14 @@ select.uk-form-width-xsmall {
 /*
  * 1. Remove margins in Chrome, Safari and Opera.
  * 2. Remove borders for `button`.
- * 3. Remove border-radius in Chrome.
- * 4. Address `overflow` set to `hidden` in IE.
- * 5. Correct `font` properties and `color` not being inherited for `button`.
- * 6. Remove the inheritance of text transform in Edge, Firefox, and IE.
- * 7. Style
- * 8. `line-height` is used to create a height because it also centers the text vertically for `a` elements.
+ * 3. Address `overflow` set to `hidden` in IE.
+ * 4. Correct `font` properties and `color` not being inherited for `button`.
+ * 5. Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 6. Style
+ * 7. `line-height` is used to create a height because it also centers the text vertically for `a` elements.
  *    Better would be to use height and flexbox to center the text vertically but flexbox doesn't work in Firefox on `button` elements.
- * 9. Align text if button has a width
- * 10. Required for `a`.
+ * 8. Align text if button has a width
+ * 9. Required for `a`.
  */
 .uk-button {
   /* 1 */
@@ -1740,25 +1747,23 @@ select.uk-form-width-xsmall {
   /* 2 */
   border: none;
   /* 3 */
-  border-radius: 0;
-  /* 4 */
   overflow: visible;
-  /* 5 */
+  /* 4 */
   font: inherit;
   color: inherit;
-  /* 6 */
+  /* 5 */
   text-transform: none;
-  /* 7 */
+  /* 6 */
   display: inline-block;
   box-sizing: border-box;
   padding: 0 30px;
   vertical-align: middle;
   font-size: 16px;
-  /* 8 */
+  /* 7 */
   line-height: 40px;
-  /* 9 */
+  /* 8 */
   text-align: center;
-  /* 10 */
+  /* 9 */
   text-decoration: none;
 }
 .uk-button:not(:disabled) {
@@ -1773,7 +1778,7 @@ select.uk-form-width-xsmall {
 }
 /* Hover */
 .uk-button:hover {
-  /* 8 */
+  /* 9 */
   text-decoration: none;
 }
 /* Focus */
@@ -2723,6 +2728,7 @@ select.uk-form-width-xsmall {
 .uk-close:focus {
   color: #666666;
   outline: none;
+  position: absolute;
 }
 /* ========================================================================
    Component: Spinner
@@ -3601,7 +3607,7 @@ ul.uk-nav-sub {
   align-items: center;
   /* 2 */
   box-sizing: border-box;
-  height: 80px;
+  min-height: 80px;
   padding: 0 15px;
   /* 3 */
   font-size: 16px;
@@ -4635,6 +4641,12 @@ ul.uk-nav-sub {
  * Hover
  */
 /*
+ * Focus
+ */
+.uk-modal-close-default:focus {
+  top: 10px;
+}
+/*
  * Default
  */
 /*
@@ -4753,7 +4765,7 @@ ul.uk-nav-sub {
   background: rgba(0, 0, 0, 0.3);
   color: rgba(255, 255, 255, 0.7);
 }
-.uk-lightbox-toolbar * {
+.uk-lightbox-toolbar > * {
   color: rgba(255, 255, 255, 0.7);
 }
 /* Toolbar Icon (Close)
@@ -5100,7 +5112,7 @@ ul.uk-nav-sub {
 .uk-offcanvas-overlay.uk-open::before {
   opacity: 1;
 }
-/* Container
+/* Prevent scrolling
  ========================================================================== */
 /*
  * Prevent horizontal scrollbar when the content is slide-out
@@ -5110,47 +5122,37 @@ ul.uk-nav-sub {
 .uk-offcanvas-container {
   overflow-x: hidden;
 }
-/*
- * Prevent all scrollbars if overlay is used
- */
-.uk-offcanvas-container-overlay {
-  overflow: hidden;
-}
-/* Content
+/* Container
  ========================================================================== */
 /*
  * Prepare slide-out animation (Used in reveal and push mode)
  * Using `position: left` instead of `transform` because position `fixed` elements like sticky navbars
  * lose their fixed state and behaves like `absolute` within a transformed container
- * Note: JS sets a fixed width and height so the page can slide-out without shrinking
- * 1. Smooth scrolling
+ * 1. Provide a fixed width and prevent shrinking
  */
-.uk-offcanvas-container .uk-offcanvas-content {
+.uk-offcanvas-container {
   position: relative;
   left: 0;
   transition: left 0.3s ease-out;
   /* 1 */
-  -webkit-overflow-scrolling: touch;
-}
-/* Disable scrolling if overlay mode */
-.uk-offcanvas-overlay .uk-offcanvas-content {
-  overflow-y: hidden;
+  box-sizing: border-box;
+  width: 100%;
 }
 /*
  * Activate slide-out animation
  */
-:not(.uk-offcanvas-flip) > .uk-offcanvas-content-animation {
+:not(.uk-offcanvas-flip).uk-offcanvas-container-animation {
   left: 270px;
 }
-.uk-offcanvas-flip > .uk-offcanvas-content-animation {
+.uk-offcanvas-flip.uk-offcanvas-container-animation {
   left: -270px;
 }
 /* Tablet landscape and bigger */
 @media (min-width: 960px) {
-  :not(.uk-offcanvas-flip) > .uk-offcanvas-content-animation {
+  :not(.uk-offcanvas-flip).uk-offcanvas-container-animation {
     left: 350px;
   }
-  .uk-offcanvas-flip > .uk-offcanvas-content-animation {
+  .uk-offcanvas-flip.uk-offcanvas-container-animation {
     left: -350px;
   }
 }
@@ -5208,9 +5210,14 @@ ul.uk-nav-sub {
 .uk-leader-fill.uk-leader-hide::after {
   display: none;
 }
-/* Pass fill character to JS */
-.var-leader-fill::before {
+/*
+ * Pass fill character to JS
+ */
+.uk-leader-fill-content::before {
   content: '.';
+}
+:root {
+  --uk-leader-fill-content: .;
 }
 /* ========================================================================
    Component: Iconnav
@@ -5232,13 +5239,11 @@ ul.uk-nav-sub {
   margin-left: -10px;
 }
 /*
- * 1. Space is allocated solely based on content dimensions: 0 0 auto
- * 2. Gutter
+ * Space is allocated based on content dimensions, but shrinks: 0 1 auto
+ * 1. Gutter
  */
 .uk-iconnav > * {
   /* 1 */
-  flex: none;
-  /* 2 */
   padding-left: 10px;
 }
 /* Items
@@ -5511,12 +5516,6 @@ ul.uk-nav-sub {
  ========================================================================== */
 .uk-sortable {
   position: relative;
-}
-/*
- * Deactivate browser touch actions in IE11 and Edge
- */
-.uk-sortable > * {
-  touch-action: none;
 }
 /*
  * Deactivate pointer-events on SVGs in Safari
@@ -30374,6 +30373,9 @@ ul.uk-nav-sub {
 .uk-text-muted {
   color: #999999 !important;
 }
+.uk-text-emphasis {
+  color: #333333 !important;
+}
 .uk-text-primary {
   color: #1e87f0 !important;
 }
@@ -30948,16 +30950,13 @@ iframe.uk-cover {
 /*
  * 1. Fill all SVG elements with the current text color if no `fill` attribute is set
  * 2. Set the fill and stroke color of all SVG elements to the current text color
- * 3. Fix for uppercase attribute names in Edge. Will be fixed in Windows 10 builds 16251+
  */
 /* 1 */
 .uk-svg,
-.uk-svg:not(.uk-preserve) [fill*='#']:not(.uk-preserve),
-.uk-svg:not(.uk-preserve) [FILL*='#']:not(.uk-preserve) {
+.uk-svg:not(.uk-preserve) [fill*='#']:not(.uk-preserve) {
   fill: currentcolor;
 }
-.uk-svg:not(.uk-preserve) [stroke*='#']:not(.uk-preserve),
-.uk-svg:not(.uk-preserve) [STROKE*='#']:not(.uk-preserve) {
+.uk-svg:not(.uk-preserve) [stroke*='#']:not(.uk-preserve) {
   stroke: currentcolor;
 }
 /*
@@ -31147,6 +31146,9 @@ iframe.uk-cover {
  ========================================================================== */
 .uk-border-circle {
   border-radius: 50%;
+}
+.uk-border-pill {
+  border-radius: 500px;
 }
 .uk-border-rounded {
   border-radius: 5px;
@@ -32263,7 +32265,7 @@ iframe.uk-cover {
  ========================================================================== */
 /*
  * Hidden
- * Can't use `display: hidden` because it's not focusable. This is accessible through keyboard.
+ * Can't use `display: none` because it's not accessible through keyboard.
  */
 .uk-visible-toggle:not(:hover):not(.uk-hover) .uk-hidden-hover:not(:focus) {
   position: absolute !important;
@@ -32275,7 +32277,7 @@ iframe.uk-cover {
 }
 /*
  * Invisible
- * Can't use `visibility: hidden` because it's not focusable. This is accessible through keyboard.
+ * Can't use `visibility: hidden` because it's not accessible through keyboard.
  */
 .uk-visible-toggle:not(:hover):not(.uk-hover) .uk-invisible-hover:not(:focus) {
   opacity: 0 !important;
@@ -32776,6 +32778,19 @@ iframe.uk-cover {
 .uk-offcanvas-bar .uk-divider-small::after {
   border-top-color: rgba(255, 255, 255, 0.2);
 }
+.uk-light .uk-divider-vertical::after,
+.uk-section-primary:not(.uk-preserve-color) .uk-divider-vertical::after,
+.uk-section-secondary:not(.uk-preserve-color) .uk-divider-vertical::after,
+.uk-tile-primary:not(.uk-preserve-color) .uk-divider-vertical::after,
+.uk-tile-secondary:not(.uk-preserve-color) .uk-divider-vertical::after,
+.uk-card-primary.uk-card-body .uk-divider-vertical::after,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-divider-vertical::after,
+.uk-card-secondary.uk-card-body .uk-divider-vertical::after,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-divider-vertical::after,
+.uk-overlay-primary .uk-divider-vertical::after,
+.uk-offcanvas-bar .uk-divider-vertical::after {
+  border-left-color: rgba(255, 255, 255, 0.2);
+}
 .uk-light .uk-list-divider > li:nth-child(n+2),
 .uk-section-primary:not(.uk-preserve-color) .uk-list-divider > li:nth-child(n+2),
 .uk-section-secondary:not(.uk-preserve-color) .uk-list-divider > li:nth-child(n+2),
@@ -33135,17 +33150,17 @@ iframe.uk-cover {
   background-color: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.7);
 }
-.uk-light .uk-input:-ms-input-placeholder,
-.uk-section-primary:not(.uk-preserve-color) .uk-input:-ms-input-placeholder,
-.uk-section-secondary:not(.uk-preserve-color) .uk-input:-ms-input-placeholder,
-.uk-tile-primary:not(.uk-preserve-color) .uk-input:-ms-input-placeholder,
-.uk-tile-secondary:not(.uk-preserve-color) .uk-input:-ms-input-placeholder,
-.uk-card-primary.uk-card-body .uk-input:-ms-input-placeholder,
-.uk-card-primary > :not([class*='uk-card-media']) .uk-input:-ms-input-placeholder,
-.uk-card-secondary.uk-card-body .uk-input:-ms-input-placeholder,
-.uk-card-secondary > :not([class*='uk-card-media']) .uk-input:-ms-input-placeholder,
-.uk-overlay-primary .uk-input:-ms-input-placeholder,
-.uk-offcanvas-bar .uk-input:-ms-input-placeholder {
+.uk-light .uk-input::-ms-input-placeholder,
+.uk-section-primary:not(.uk-preserve-color) .uk-input::-ms-input-placeholder,
+.uk-section-secondary:not(.uk-preserve-color) .uk-input::-ms-input-placeholder,
+.uk-tile-primary:not(.uk-preserve-color) .uk-input::-ms-input-placeholder,
+.uk-tile-secondary:not(.uk-preserve-color) .uk-input::-ms-input-placeholder,
+.uk-card-primary.uk-card-body .uk-input::-ms-input-placeholder,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-input::-ms-input-placeholder,
+.uk-card-secondary.uk-card-body .uk-input::-ms-input-placeholder,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-input::-ms-input-placeholder,
+.uk-overlay-primary .uk-input::-ms-input-placeholder,
+.uk-offcanvas-bar .uk-input::-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.5) !important;
 }
 .uk-light .uk-input::placeholder,
@@ -33161,17 +33176,17 @@ iframe.uk-cover {
 .uk-offcanvas-bar .uk-input::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
-.uk-light .uk-textarea:-ms-input-placeholder,
-.uk-section-primary:not(.uk-preserve-color) .uk-textarea:-ms-input-placeholder,
-.uk-section-secondary:not(.uk-preserve-color) .uk-textarea:-ms-input-placeholder,
-.uk-tile-primary:not(.uk-preserve-color) .uk-textarea:-ms-input-placeholder,
-.uk-tile-secondary:not(.uk-preserve-color) .uk-textarea:-ms-input-placeholder,
-.uk-card-primary.uk-card-body .uk-textarea:-ms-input-placeholder,
-.uk-card-primary > :not([class*='uk-card-media']) .uk-textarea:-ms-input-placeholder,
-.uk-card-secondary.uk-card-body .uk-textarea:-ms-input-placeholder,
-.uk-card-secondary > :not([class*='uk-card-media']) .uk-textarea:-ms-input-placeholder,
-.uk-overlay-primary .uk-textarea:-ms-input-placeholder,
-.uk-offcanvas-bar .uk-textarea:-ms-input-placeholder {
+.uk-light .uk-textarea::-ms-input-placeholder,
+.uk-section-primary:not(.uk-preserve-color) .uk-textarea::-ms-input-placeholder,
+.uk-section-secondary:not(.uk-preserve-color) .uk-textarea::-ms-input-placeholder,
+.uk-tile-primary:not(.uk-preserve-color) .uk-textarea::-ms-input-placeholder,
+.uk-tile-secondary:not(.uk-preserve-color) .uk-textarea::-ms-input-placeholder,
+.uk-card-primary.uk-card-body .uk-textarea::-ms-input-placeholder,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-textarea::-ms-input-placeholder,
+.uk-card-secondary.uk-card-body .uk-textarea::-ms-input-placeholder,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-textarea::-ms-input-placeholder,
+.uk-overlay-primary .uk-textarea::-ms-input-placeholder,
+.uk-offcanvas-bar .uk-textarea::-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.5) !important;
 }
 .uk-light .uk-textarea::placeholder,
@@ -34875,7 +34890,7 @@ iframe.uk-cover {
 .uk-overlay-primary .uk-accordion-title:focus,
 .uk-offcanvas-bar .uk-accordion-title:hover,
 .uk-offcanvas-bar .uk-accordion-title:focus {
-  color: #666666;
+  color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-iconnav > * > a,
 .uk-section-primary:not(.uk-preserve-color) .uk-iconnav > * > a,
@@ -34965,6 +34980,19 @@ iframe.uk-cover {
 .uk-overlay-primary .uk-text-muted,
 .uk-offcanvas-bar .uk-text-muted {
   color: rgba(255, 255, 255, 0.5) !important;
+}
+.uk-light .uk-text-emphasis,
+.uk-section-primary:not(.uk-preserve-color) .uk-text-emphasis,
+.uk-section-secondary:not(.uk-preserve-color) .uk-text-emphasis,
+.uk-tile-primary:not(.uk-preserve-color) .uk-text-emphasis,
+.uk-tile-secondary:not(.uk-preserve-color) .uk-text-emphasis,
+.uk-card-primary.uk-card-body .uk-text-emphasis,
+.uk-card-primary > :not([class*='uk-card-media']) .uk-text-emphasis,
+.uk-card-secondary.uk-card-body .uk-text-emphasis,
+.uk-card-secondary > :not([class*='uk-card-media']) .uk-text-emphasis,
+.uk-overlay-primary .uk-text-emphasis,
+.uk-offcanvas-bar .uk-text-emphasis {
+  color: #ffffff !important;
 }
 .uk-light .uk-text-primary,
 .uk-section-primary:not(.uk-preserve-color) .uk-text-primary,
