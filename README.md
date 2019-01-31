@@ -11,15 +11,17 @@ https://www.getuikit.com
 This wrapper was designed for Beaver Builder Theme, but might also work with other themes.
 
 **Note:**
-Don't get yourself fooled by the size of this plugin. The current plugin (UIkit rc20) has all the less-styling and the pre-packed AlekVolsk extension for extra columns in the subfolders. The actual enqueued js and css files are somewhere around 800 kb, the size of 2 large images, but will allow you to do amazing stuff.
+Don't get yourself fooled by the size of this plugin. The current plugin has all the less-styling and the pre-packed AlekVolsk extension for extra columns in the subfolders. The actual enqueued js and css files are somewhere around 800 kb, the size of 2 large images, but will allow you to do amazing stuff.
 
 **Changelog:**
-rc20.1 - november 20th, 2018
+
+v3.0.3 - January 31st, 2018
+official release, no longer rc
+added css styling to remove background-color on modal close button
+
+v3 rc20.1 - november 20th, 2018
 minor update to the modal close button that kept jumping away when focused.
 started changelog
 
-rc20 - history
+v3 rc20 - history
 update to Release Candidate 20
-
-
-
