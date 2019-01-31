@@ -291,13 +291,6 @@
 }
 
 /*
- * Focus
- */
-.uk-modal-close-default:focus {
-    top: @modal-close-position;
-}
-
-/*
  * Default
  */
 
@@ -307,6 +300,21 @@
 
 .uk-modal-close-default:hover {
     .hook-modal-close-default-hover;
+}
+
+/*
+ * Focus
+ */
+.uk-modal-close-default:focus {
+    top: @modal-close-position;
+}
+
+/*
+ * Remove background color on focus and hover
+ */
+button.uk-modal-close-default:hover,
+button.uk-modal-close-default:focus {
+    background:none;
 }
 
 /*

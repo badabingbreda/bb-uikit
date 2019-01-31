@@ -93,15 +93,15 @@
 
 html {
     /* 1 */
-    //font-family: @base-body-font-family;
+    // font-family: @base-body-font-family;
     font-size: @base-body-font-size;
     font-weight: @base-body-font-weight;
     line-height: @base-body-line-height;
     /* 2 */
     -webkit-text-size-adjust: 100%;
     /* 3 */
-    //background: @base-body-background;
-    //color: @base-body-color;
+    // background: @base-body-background;
+    // color: @base-body-color;
     .hook-base-body;
 }
 
@@ -125,8 +125,8 @@ a { -webkit-text-decoration-skip: objects; }
  * Remove the outline on focused links when they are also active or hovered
  */
 
-//a:active,
-//a:hover { outline: none; }
+a:active,
+a:hover { /* outline: none; */ }
 
 /*
  * Style
@@ -134,17 +134,17 @@ a { -webkit-text-decoration-skip: objects; }
 
 a,
 .uk-link {
-    //color: @base-link-color;
-    //text-decoration: @base-link-text-decoration;
-    //cursor: pointer;
-    //.hook-base-link;
+    // color: @base-link-color;
+    // text-decoration: @base-link-text-decoration;
+    // cursor: pointer;
+    // .hook-base-link;
 }
 
 a:hover,
 .uk-link:hover {
-    //color: @base-link-hover-color;
-    //text-decoration: @base-link-hover-text-decoration;
-    //.hook-base-link-hover;
+    // color: @base-link-hover-color;
+    // text-decoration: @base-link-hover-text-decoration;
+    // .hook-base-link-hover;
 }
 
 
@@ -181,11 +181,11 @@ strong { font-weight: @base-strong-font-weight; }
 :not(pre) > kbd,
 :not(pre) > samp {
     /* 1 */
-    //font-family: @base-code-font-family;
+    // font-family: @base-code-font-family;
     /* 2 */
     font-size: @base-code-font-size;
     /* 3 */
-    //color: @base-code-color;
+    // color: @base-code-color;
     white-space: nowrap;
     .hook-base-code;
 }
@@ -264,7 +264,6 @@ video { vertical-align: middle; }
  * 4. Exclude SVGs for IE11 because they don't preserve their aspect ratio.
  */
 
-audio,
 canvas,
 img,
 video {
@@ -345,9 +344,9 @@ h4, .uk-h4,
 h5, .uk-h5,
 h6, .uk-h6 {
     margin: 0 0 @base-margin-vertical 0;
-    //font-family: @base-heading-font-family;
+    // font-family: @base-heading-font-family;
     font-weight: @base-heading-font-weight;
-    //color: @base-heading-color;
+    // color: @base-heading-color;
     text-transform: @base-heading-text-transform;
     .hook-base-heading;
 }

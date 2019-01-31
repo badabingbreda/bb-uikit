@@ -79,6 +79,7 @@ h6, .uk-h6 {
 /********************************************************************************************
  * components/modal.less ADD FOLLOWING LINES
  * add extra CSS style for .uk-modal-close-default:focus
+ * add extra CSS style to remove background color from close button
  ********************************************************************************************/
 
 
@@ -87,6 +88,14 @@ h6, .uk-h6 {
  */
 .uk-modal-close-default:focus {
     top: @modal-close-position;
+}
+
+/*
+ * Remove background color on focus and hover
+ */
+button.uk-modal-close-default:hover,
+button.uk-modal-close-default:focus {
+    background:none;
 }
 
 /********************************************************************************************
