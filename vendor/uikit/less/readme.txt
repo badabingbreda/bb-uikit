@@ -96,6 +96,7 @@ h6, .uk-h6 {
 button.uk-modal-close-default:hover,
 button.uk-modal-close-default:focus {
     background:none;
+    border:none;
 }
 
 /********************************************************************************************
