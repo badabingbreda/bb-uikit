@@ -1,5 +1,5 @@
 /*
- * how to prep new rc for bb-uikit dist
+ * how to prep for bb-uikit dist
  *
  */
 
@@ -95,6 +95,23 @@ h6, .uk-h6 {
  */
 button.uk-modal-close-default:hover,
 button.uk-modal-close-default:focus {
+    background:none;
+    border:none;
+}
+
+/********************************************************************************************
+ * components/lightbox.less ADD FOLLOWING LINES
+ * add extra CSS style for .uk-lightbox-panel button.uk-close:focus
+ * add extra CSS style to remove background color from close button
+ ********************************************************************************************/
+
+
+/*
+ * Remove background color on focus and hover
+ */
+.uk-lightbox-toolbar button.uk-close:hover,
+.uk-lightbox-toolbar button.uk-close:focus {
+    position:relative;
     background:none;
     border:none;
 }

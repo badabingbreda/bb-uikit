@@ -3,7 +3,7 @@
  * Plugin Name: Beaver Builder UI Kit
  * Plugin URI: http://www.badabing.nl
  * Description: UIkit 3.0.3 for Beaver Builder with AlekVolsk's width-ex for extended col support (up to 30)
- * Version: 1.1
+ * Version: 1.1.1
  * Author: BadabingBreda
  * Domain Path: languages/
  * Text Domain: bb-ui-kit
@@ -11,7 +11,7 @@
  */
 
 define( 'BBUIKIT_URL' 		, plugins_url( '/', __FILE__ ) );
-define( 'BBUIKIT_VERSION' 		, '1.1' );
+define( 'BBUIKIT_VERSION' 		, '1.1.1' );
 
 
 add_action( 'wp_enqueue_scripts', 'beaver_ui_kit_scripts_styles', 99, 1 );

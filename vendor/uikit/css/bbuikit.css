@@ -4882,6 +4882,15 @@ button.uk-modal-close-default:focus {
 .uk-lightbox-toolbar-icon:hover {
   color: #ffffff;
 }
+/*
+ * Remove background color on focus and hover
+ */
+.uk-lightbox-toolbar button.uk-close:hover,
+.uk-lightbox-toolbar button.uk-close:focus {
+  position: relative;
+  background: none;
+  border: none;
+}
 /* Button (Slidenav)
  ========================================================================== */
 /*
