@@ -93,15 +93,15 @@
 
 html {
     /* 1 */
-    // font-family: @base-body-font-family;
+    font-family: @base-body-font-family;
     font-size: @base-body-font-size;
     font-weight: @base-body-font-weight;
     line-height: @base-body-line-height;
     /* 2 */
     -webkit-text-size-adjust: 100%;
     /* 3 */
-    // background: @base-body-background;
-    // color: @base-body-color;
+    background: @base-body-background;
+    color: @base-body-color;
     .hook-base-body;
 }
 
@@ -116,17 +116,11 @@ body { margin: 0; }
  ========================================================================== */
 
 /*
- * Remove gaps in links underline in iOS 8+ and Safari 8+.
- */
-
-a { -webkit-text-decoration-skip: objects; }
-
-/*
  * Remove the outline on focused links when they are also active or hovered
  */
 
 a:active,
-a:hover { /* outline: none; */ }
+a:hover { outline: none; }
 
 /*
  * Style
@@ -134,17 +128,19 @@ a:hover { /* outline: none; */ }
 
 a,
 .uk-link {
-    // color: @base-link-color;
-    // text-decoration: @base-link-text-decoration;
-    // cursor: pointer;
-    // .hook-base-link;
+    color: @base-link-color;
+    text-decoration: @base-link-text-decoration;
+    cursor: pointer;
+    .hook-base-link;
 }
 
 a:hover,
-.uk-link:hover {
-    // color: @base-link-hover-color;
-    // text-decoration: @base-link-hover-text-decoration;
-    // .hook-base-link-hover;
+.uk-link:hover,
+.uk-link-toggle:hover .uk-link,
+.uk-link-toggle:focus .uk-link {
+    color: @base-link-hover-color;
+    text-decoration: @base-link-hover-text-decoration;
+    .hook-base-link-hover;
 }
 
 
@@ -152,14 +148,13 @@ a:hover,
  ========================================================================== */
 
 /*
- * 1. Add an underline text decoration in Safari, Edge and IE.
- * 2. Add `dotted` style in Safari.
- * Note: The shorthand declaration `underline dotted` is not supported in Safari, Edge and IE.
+ * 1. Add the correct text decoration in Edge.
+ * 2. The shorthand declaration `underline dotted` is not supported in Safari.
  */
 
 abbr[title] {
     /* 1 */
-    text-decoration: underline;
+    text-decoration: underline dotted;
     /* 2 */
     -webkit-text-decoration-style: dotted;
 }
@@ -181,11 +176,11 @@ strong { font-weight: @base-strong-font-weight; }
 :not(pre) > kbd,
 :not(pre) > samp {
     /* 1 */
-    //font-family: @base-code-font-family;
+    font-family: @base-code-font-family;
     /* 2 */
     font-size: @base-code-font-size;
     /* 3 */
-    //color: @base-code-color;
+    color: @base-code-color;
     white-space: nowrap;
     .hook-base-code;
 }
@@ -293,11 +288,17 @@ video {
 svg:not(:root) { overflow: hidden; }
 
 /*
- * Hide `alt` text for lazy load images
- * Selector for background while loading img[data-src*='.jpg'][src*='data:image'] { background: grey; }
+ * 1. Fix lazy loading images if parent element is set to `display: inline` and has `overflow: hidden`.
+ * 2. Hide `alt` text for lazy loading images.
+ * Note: Selector for background while loading img[data-src*='.jpg'][src*='data:image'] { background: grey; }
  */
 
-img:not([src]) { visibility: hidden; }
+img:not([src]) {
+    /* 1 */
+    min-width: 1px;
+    /* 2 */
+    visibility: hidden;
+}
 
 /*
  * Iframe
@@ -349,9 +350,9 @@ h6, .uk-h6,
 .uk-heading-xlarge,
 .uk-heading-2xlarge {
     margin: 0 0 @base-margin-vertical 0;
-    // font-family: @base-heading-font-family;
+    font-family: @base-heading-font-family;
     font-weight: @base-heading-font-weight;
-    // color: @base-heading-color;
+    color: @base-heading-color;
     text-transform: @base-heading-text-transform;
     .hook-base-heading;
 }
@@ -445,21 +446,17 @@ dd { margin-left: 0; }
  ========================================================================== */
 
 /*
- * 1. Add the correct box sizing and height in Firefox.
- * 2. Show the overflow in Edge and IE.
- * 3. Add the correct text-align in Edge and IE.
- * 4. Style
+ * 1. Show the overflow in Chrome, Edge and IE.
+ * 2. Add the correct text-align in Edge and IE.
+ * 3. Style
  */
 
 hr, .uk-hr {
     /* 1 */
-    box-sizing: content-box;
-    height: 0;
-    /* 2 */
     overflow: visible;
-    /* 3 */
+    /* 2 */
     text-align: inherit;
-    /* 4 */
+    /* 3 */
     margin: 0 0 @base-hr-margin-vertical 0;
     border: 0;
     border-top: @base-hr-border-width solid @base-hr-border;

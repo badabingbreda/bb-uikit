@@ -77,7 +77,7 @@ h6, .uk-h6 {
 }
 
 /********************************************************************************************
- * components/modal.less ADD FOLLOWING LINES
+ * components/modal.less ADD FOLLOWING LINES ~ line # 305
  * add extra CSS style for .uk-modal-close-default:focus
  * add extra CSS style to remove background color from close button
  ********************************************************************************************/
@@ -100,7 +100,7 @@ button.uk-modal-close-default:focus {
 }
 
 /********************************************************************************************
- * components/lightbox.less ADD FOLLOWING LINES
+ * components/lightbox.less ADD FOLLOWING LINES ~ line # 160
  * add extra CSS style for .uk-lightbox-panel button.uk-close:focus
  * add extra CSS style to remove background color from close button
  ********************************************************************************************/

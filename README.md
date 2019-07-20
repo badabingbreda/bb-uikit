@@ -15,7 +15,13 @@ Don't get yourself fooled by the size of this plugin. The current plugin has all
 
 **Changelog:**
 
-v3.0.3 - January 31st, 2018
+v.1.3.0 - July 2019
+UIkit v3.1.6 - AlekVolsk release
+
+v1.2.0 - April 2019
+UIkit v3.1.4 - AlekVolsk release
+
+v3.0.3 - January 31st, 2019
 official release, no longer rc
 added css styling to remove background-color on modal close button
 
