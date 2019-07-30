@@ -15,6 +15,13 @@ Don't get yourself fooled by the size of this plugin. The current plugin has all
 
 **Changelog:**
 
+v.1.3.2 - July 2019
+Removed CSS font-family style from uk-h1 through uk-h6
+
+v.1.3.1 - July 2019
+UIkit v3.1.6 - AlekVolsk release
+Minor SVG update
+
 v.1.3.0 - July 2019
 UIkit v3.1.6 - AlekVolsk release
 
