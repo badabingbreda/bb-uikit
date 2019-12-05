@@ -15,6 +15,19 @@ Don't get yourself fooled by the size of this plugin. The current plugin has all
 
 **Changelog:**
 
+v.1.4.1 - (December 5th, 2019)
+Fixed row background-shapes and UABB row-effect not showing the SVG shapes correctly.
+
+v.1.4.0 - (November 25th, 2019)
+Updated UIkit to version 3.2.2.
+Added extra CSS-styling in components/lightbox.less to fix close button moving away on hover.
+Tweaked svg positioning; reset .fl-builder-edit svg {} to initial so that the interface aligns correctly.
+
+Added uk-flex support for Beaver Builder columns. Use all default UIkit classes in a column to control the modules added inside the column as the flex-items. Works up to 6 columns using uk-child-width-1-6@ and uk-width-1-6 classes.
+
+v.1.3.3 - September 2019
+Added styling in components/lightbox.less to position close button relatively on hover (line #179)
+
 v.1.3.2 - July 2019
 Removed CSS font-family style from uk-h1 through uk-h6
 

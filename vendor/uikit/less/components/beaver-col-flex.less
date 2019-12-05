@@ -1,0 +1,308 @@
+// Name:            Beaver-Col-Flex
+// Description:     Utilities for layouts based on flexbox used in Beaver Builder Columns
+//
+// Component:       `uk-flex-*`
+//
+// ========================================================================
+
+.fl-col {
+
+	&.uk-flex .fl-col-content { display: flex; }
+	&.uk-flex-inline .fl-col-content { display: inline-flex; }
+
+	/*
+	 * Remove pseudo elements created by micro clearfix as precaution
+	 */
+	&.uk-flex::before .fl-col-content,
+	&.uk-flex::after .fl-col-content,
+	&.uk-flex-inline::before .fl-col-content,
+	&.uk-flex-inline::after .fl-col-content { display: none; }
+
+
+	/* Alignment
+	 ========================================================================== */
+
+	/*
+	 * Align items along the main axis of the current line of the flex container
+	 * Row: Horizontal
+	 */
+
+	// Default
+	&.uk-flex-left .fl-col-content { justify-content: flex-start; }
+	&.uk-flex-center .fl-col-content { justify-content: center; }
+	&.uk-flex-right  .fl-col-content { justify-content: flex-end; }
+	&.uk-flex-between  .fl-col-content { justify-content: space-between; }
+	&.uk-flex-around  .fl-col-content { justify-content: space-around; }
+
+
+	/* Phone landscape and bigger */
+	@media (min-width: @breakpoint-small) {
+
+	    &.uk-flex-left\@s .fl-col-content { justify-content: flex-start; }
+	    &.uk-flex-center\@s .fl-col-content { justify-content: center; }
+	    &.uk-flex-right\@s .fl-col-content { justify-content: flex-end; }
+	    &.uk-flex-between\@s .fl-col-content { justify-content: space-between; }
+	    &.uk-flex-around\@s  .fl-col-content { justify-content: space-around; }
+
+	}
+
+	/* Tablet landscape and bigger */
+	@media (min-width: @breakpoint-medium) {
+
+	    &.uk-flex-left\@m .fl-col-content { justify-content: flex-start; }
+	    &.uk-flex-center\@m .fl-col-content { justify-content: center; }
+	    &.uk-flex-right\@m .fl-col-content { justify-content: flex-end; }
+	    &.uk-flex-between\@m .fl-col-content { justify-content: space-between; }
+	    &.uk-flex-around\@m .fl-col-content { justify-content: space-around; }
+
+	}
+
+	/* Desktop and bigger */
+	@media (min-width: @breakpoint-large) {
+
+	    &.uk-flex-left\@l .fl-col-content { justify-content: flex-start; }
+	    &.uk-flex-center\@l .fl-col-content { justify-content: center; }
+	    &.uk-flex-right\@l .fl-col-content { justify-content: flex-end; }
+	    &.uk-flex-between\@l .fl-col-content { justify-content: space-between; }
+	    &.uk-flex-around\@l .fl-col-content { justify-content: space-around; }
+
+	}
+
+	/* Large screen and bigger */
+	@media (min-width: @breakpoint-xlarge) {
+
+	    &.uk-flex-left\@xl .fl-col-content { justify-content: flex-start; }
+	    &.uk-flex-center\@xl .fl-col-content { justify-content: center; }
+	    &.uk-flex-right\@xl .fl-col-content { justify-content: flex-end; }
+	    &.uk-flex-between\@xl .fl-col-content { justify-content: space-between; }
+	    &.uk-flex-around\@xl .fl-col-content { justify-content: space-around; }
+
+	}
+
+	/*
+	 * Align items in the cross axis of the current line of the flex container
+	 * Row: Vertical
+	 */
+
+	// Default
+	&.uk-flex-stretch .fl-col-content { align-items: stretch; width: 100%; }
+	&.uk-flex-top .fl-col-content { align-items: flex-start; }
+	&.uk-flex-middle .fl-col-content { align-items: center; }
+	&.uk-flex-bottom .fl-col-content { align-items: flex-end; }
+
+
+	/* Direction
+	 ========================================================================== */
+
+	// Default
+	&.uk-flex-row .fl-col-content { flex-direction: row; }
+	&.uk-flex-row-reverse .fl-col-content { flex-direction: row-reverse; }
+	&.uk-flex-column .fl-col-content { flex-direction: column; }
+	&.uk-flex-column-reverse .fl-col-content { flex-direction: column-reverse; }
+
+
+	/* Wrap
+	 ========================================================================== */
+
+	// Default
+	&.uk-flex-nowrap .fl-col-content { flex-wrap: nowrap; }
+	&.uk-flex-wrap .fl-col-content { flex-wrap: wrap; }
+	&.uk-flex-wrap-reverse .fl-col-content { flex-wrap: wrap-reverse; }
+
+	/*
+	 * Aligns items within the flex container when there is extra space in the cross-axis
+	 * Only works if there is more than one line of flex items
+	 */
+
+	// Default
+	&.uk-flex-wrap-stretch .fl-col-content { align-content: stretch; }
+	&.uk-flex-wrap-top .fl-col-content { align-content: flex-start; }
+	&.uk-flex-wrap-middle .fl-col-content { align-content: center; }
+	&.uk-flex-wrap-bottom .fl-col-content { align-content: flex-end; }
+	&.uk-flex-wrap-between .fl-col-content { align-content: space-between; }
+	&.uk-flex-wrap-around .fl-col-content { align-content: space-around; }
+
+
+	/* Item ordering
+	 ========================================================================== */
+
+	/*
+	 * Default is 0
+	 */
+
+	&.uk-flex-first .fl-col-content { order: -1;}
+	&.uk-flex-last .fl-col-content { order: 99;}
+
+
+	/* Phone landscape and bigger */
+	@media (min-width: @breakpoint-small) {
+
+	    &.uk-flex-first\@s .fl-col-content { order: -1; }
+	    &.uk-flex-last\@s .fl-col-content { order: 99; }
+
+	}
+
+	/* Tablet landscape and bigger */
+	@media (min-width: @breakpoint-medium) {
+
+	    &.uk-flex-first\@m .fl-col-content { order: -1; }
+	    &.uk-flex-last\@m .fl-col-content { order: 99; }
+
+	}
+
+	/* Desktop and bigger */
+	@media (min-width: @breakpoint-large) {
+
+	    &.uk-flex-first\@l .fl-col-content { order: -1; }
+	    &.uk-flex-last\@l .fl-col-content { order: 99; }
+
+	}
+
+	/* Large screen and bigger */
+	@media (min-width: @breakpoint-xlarge) {
+
+	    &.uk-flex-first\@xl .fl-col-content { order: -1; }
+	    &.uk-flex-last\@xl .fl-col-content { order: 99; }
+
+	}
+
+
+	/* Item dimensions
+	 ========================================================================== */
+
+	/*
+	 * Initial: 0 1 auto
+	 * Content dimensions, but shrinks
+	 */
+
+	/*
+	 * No Flex: 0 0 auto
+	 * Content dimensions
+	 */
+
+	&.uk-flex-none .fl-col-content { flex: none; }
+
+	/*
+	 * Relative Flex: 1 1 auto
+	 * Space is allocated considering content
+	 */
+
+	&.uk-flex-auto .fl-col-content { flex: auto; }
+
+	/*
+	 * Absolute Flex: 1 1 0%
+	 * Space is allocated solely based on flex
+	 */
+
+	&.uk-flex-1 .fl-col-content { flex: 1; }
+
+
+	/* ========================================================================
+	   Component: Width
+	 ========================================================================== */
+
+
+	/* Equal child widths
+	 ========================================================================== */
+
+	&[class*='uk-child-width'] > .fl-col-content .fl-module:not([class*='uk-width']) {
+	    box-sizing: border-box;
+	    width: 100%;
+	}
+
+	&.uk-child-width-1-2 > .fl-col-content .fl-module:not([class*='uk-width']) { width: 50%; }
+	&.uk-child-width-1-3 > .fl-col-content .fl-module:not([class*='uk-width']) { width: ~'calc(100% * 1 / 3.001)'; }
+	&.uk-child-width-1-4 > .fl-col-content .fl-module:not([class*='uk-width']) { width: 25%; }
+	&.uk-child-width-1-5 > .fl-col-content .fl-module:not([class*='uk-width']) { width: 20%; }
+	&.uk-child-width-1-6 > .fl-col-content .fl-module:not([class*='uk-width']) { width: ~'calc(100% * 1 / 6.001)'; }
+
+	&.uk-child-width-auto > .fl-col-content .fl-module:not([class*='uk-width']) { width: auto; }
+
+	/*
+	 * 1. Reset the `min-width`, which is set to auto by default, because
+	 *    flex items won't shrink below their minimum intrinsic content size.
+	 *    Using `1px` instead of `0`, so items still wrap into the next line,
+	 *    if they have zero width and padding and the predecessor is 100% wide.
+	 */
+
+	&.uk-child-width-expand > .fl-col-content .fl-module:not([class*='uk-width']) {
+	    flex: 1;
+	    /* 1 */
+	    min-width: 1px;
+	}
+
+	/* Phone landscape and bigger */
+	@media (min-width: @breakpoint-small) {
+
+	    &.uk-child-width-1-1\@s > .fl-col-content .fl-module:not([class*='uk-width']) { width: 100%; }
+	    &.uk-child-width-1-2\@s > .fl-col-content .fl-module:not([class*='uk-width']) { width: 50%; }
+	    &.uk-child-width-1-3\@s > .fl-col-content .fl-module:not([class*='uk-width']) { width: ~'calc(100% * 1 / 3.001)'; }
+	    &.uk-child-width-1-4\@s > .fl-col-content .fl-module:not([class*='uk-width']) { width: 25%; }
+	    &.uk-child-width-1-5\@s > .fl-col-content .fl-module:not([class*='uk-width']) { width: 20%; }
+	    &.uk-child-width-1-6\@s > .fl-col-content .fl-module:not([class*='uk-width']) { width: ~'calc(100% * 1 / 6.001)'; }
+
+	    &.uk-child-width-auto\@s > .fl-col-content .fl-module:not([class*='uk-width']) { width: auto; }
+	    &.uk-child-width-expand\@s > .fl-col-content .fl-module:not([class*='uk-width']) {
+	        flex: 1;
+	        min-width: 1px;
+	    }
+
+	}
+
+	/* Tablet landscape and bigger */
+	@media (min-width: @breakpoint-medium) {
+
+	    &.uk-child-width-1-1\@m > .fl-col-content .fl-module:not([class*='uk-width']) { width: 100%; }
+	    &.uk-child-width-1-2\@m > .fl-col-content .fl-module:not([class*='uk-width']) { width: 50%; }
+	    &.uk-child-width-1-3\@m > .fl-col-content .fl-module:not([class*='uk-width']) { width: ~'calc(100% * 1 / 3.001)'; }
+	    &.uk-child-width-1-4\@m > .fl-col-content .fl-module:not([class*='uk-width']) { width: 25%; }
+	    &.uk-child-width-1-5\@m > .fl-col-content .fl-module:not([class*='uk-width']) { width: 20%; }
+	    &.uk-child-width-1-6\@m > .fl-col-content .fl-module:not([class*='uk-width']) { width: ~'calc(100% * 1 / 6.001)'; }
+
+	    &.uk-child-width-auto\@m > .fl-col-content .fl-module:not([class*='uk-width']) { width: auto; }
+	    &.uk-child-width-expand\@m > .fl-col-content .fl-module:not([class*='uk-width']) {
+	        flex: 1;
+	        min-width: 1px;
+	    }
+
+	}
+
+	/* Desktop and bigger */
+	@media (min-width: @breakpoint-large) {
+
+	    &.uk-child-width-1-1\@l > .fl-col-content .fl-module:not([class*='uk-width']) { width: 100%; }
+	    &.uk-child-width-1-2\@l > .fl-col-content .fl-module:not([class*='uk-width']) { width: 50%; }
+	    &.uk-child-width-1-3\@l > .fl-col-content .fl-module:not([class*='uk-width']) { width: ~'calc(100% * 1 / 3.001)'; }
+	    &.uk-child-width-1-4\@l > .fl-col-content .fl-module:not([class*='uk-width']) { width: 25%; }
+	    &.uk-child-width-1-5\@l > .fl-col-content .fl-module:not([class*='uk-width']) { width: 20%; }
+	    &.uk-child-width-1-6\@l > .fl-col-content .fl-module:not([class*='uk-width']) { width: ~'calc(100% * 1 / 6.001)'; }
+
+	    &.uk-child-width-auto\@l > .fl-col-content .fl-module { width: auto; }
+	    &.uk-child-width-expand\@l > .fl-col-content .fl-module:not([class*='uk-width']) {
+	        flex: 1;
+	        min-width: 1px;
+	    }
+
+	}
+
+	/* Large screen and bigger */
+	@media (min-width: @breakpoint-xlarge) {
+
+	    &.uk-child-width-1-1\@xl > .fl-col-content .fl-module:not([class*='uk-width']) { width: 100%; }
+	    &.uk-child-width-1-2\@xl > .fl-col-content .fl-module:not([class*='uk-width']) { width: 50%; }
+	    &.uk-child-width-1-3\@xl > .fl-col-content .fl-module:not([class*='uk-width']) { width: ~'calc(100% * 1 / 3.001)'; }
+	    &.uk-child-width-1-4\@xl > .fl-col-content .fl-module:not([class*='uk-width']) { width: 25%; }
+	    &.uk-child-width-1-5\@xl > .fl-col-content .fl-module:not([class*='uk-width']) { width: 20%; }
+	    &.uk-child-width-1-6\@xl > .fl-col-content .fl-module:not([class*='uk-width']) { width: ~'calc(100% * 1 / 6.001)'; }
+
+	    &.uk-child-width-auto\@xl > .fl-col-content .fl-module:not([class*='uk-width']) { width: auto; }
+	    &.uk-child-width-expand\@xl > .fl-col-content .fl-module:not([class*='uk-width']) {
+	        flex: 1;
+	        min-width: 1px;
+	    }
+
+	}
+
+
+}
+

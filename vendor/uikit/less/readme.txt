@@ -60,6 +60,64 @@ h6, .uk-h6 {
     color: ... ;
 }
 
+/* 4 */ CHANGES TO EMBEDDED CONTENT
+
+/* Embedded content
+ ========================================================================== */
+
+/*
+ * Remove the gap between embedded content and the bottom of their containers.
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+
+    .fl-builder-edit div:not(.fl-page) & {
+        vertical-align: initial;
+    }
+}
+
+/*
+ * 1. Add responsiveness.
+ * 2. Auto-scale the height. Only needed if `height` attribute is present.
+ * 3. Corrects responsive `max-width` behavior if padding and border are used.
+ * 4. Exclude SVGs for IE11 because they don't preserve their aspect ratio.
+ */
+
+canvas,
+img,
+video {
+    /* 1 */
+    max-width: 100%;
+    /* 2 */
+    height: auto;
+    /* 3 */
+    box-sizing: border-box;
+}
+
+/* 4 */
+@supports (display: block) {
+
+    /* sets overall svg height to auto*/
+    svg {
+        height: auto;
+        box-sizing: border-box;
+
+        /**
+         * for beaver builder row shapes and uabb's row shapes/effects svg's
+         * we set svg under the wrap that aren't part of the fl-row-content-wrap to fit-content
+         */
+        .fl-row-content-wrap > div:not(.fl-row-content) & {
+            height: fit-content;
+        }
+
+    }
+}
 
 /********************************************************************************************
  * components/close.less ADD LINE

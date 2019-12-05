@@ -93,15 +93,6 @@
 
 html {
     /* 1 */
-    font-family: @base-body-font-family;
-    font-size: @base-body-font-size;
-    font-weight: @base-body-font-weight;
-    line-height: @base-body-line-height;
-    /* 2 */
-    -webkit-text-size-adjust: 100%;
-    /* 3 */
-    background: @base-body-background;
-    color: @base-body-color;
     .hook-base-body;
 }
 
@@ -119,29 +110,10 @@ body { margin: 0; }
  * Remove the outline on focused links when they are also active or hovered
  */
 
-a:active,
-a:hover { outline: none; }
-
 /*
  * Style
  */
 
-a,
-.uk-link {
-    color: @base-link-color;
-    text-decoration: @base-link-text-decoration;
-    cursor: pointer;
-    .hook-base-link;
-}
-
-a:hover,
-.uk-link:hover,
-.uk-link-toggle:hover .uk-link,
-.uk-link-toggle:focus .uk-link {
-    color: @base-link-hover-color;
-    text-decoration: @base-link-hover-text-decoration;
-    .hook-base-link-hover;
-}
 
 
 /* Text-level semantics
@@ -175,12 +147,8 @@ strong { font-weight: @base-strong-font-weight; }
 :not(pre) > code,
 :not(pre) > kbd,
 :not(pre) > samp {
-    /* 1 */
-    font-family: @base-code-font-family;
     /* 2 */
     font-size: @base-code-font-size;
-    /* 3 */
-    color: @base-code-color;
     white-space: nowrap;
     .hook-base-code;
 }
@@ -250,7 +218,13 @@ canvas,
 iframe,
 img,
 svg,
-video { vertical-align: middle; }
+video {
+    vertical-align: middle;
+
+    .fl-builder-edit div:not(.fl-page) & {
+        vertical-align: initial;
+    }
+}
 
 /*
  * 1. Add responsiveness.
@@ -273,12 +247,20 @@ video {
 /* 4 */
 @supports (display: block) {
 
-   svg {
-        max-width: 100%;
+    /* sets overall svg height to auto*/
+    svg {
         height: auto;
         box-sizing: border-box;
-    }
 
+        /**
+         * for beaver builder row shapes and uabb's row shapes/effects svg's
+         * we set svg under the wrap that aren't part of the fl-row-content-wrap to fit-content
+         */
+        .fl-row-content-wrap > div:not(.fl-row-content) & {
+            height: fit-content;
+        }
+
+    }
 }
 
 /*
@@ -338,12 +320,12 @@ figure { margin: 0 0 @base-margin-vertical 0; }
 /* Headings
  ========================================================================== */
 
-h1, .uk-h1,
-h2, .uk-h2,
-h3, .uk-h3,
-h4, .uk-h4,
-h5, .uk-h5,
-h6, .uk-h6,
+.uk-h1,
+.uk-h2,
+.uk-h3,
+.uk-h4,
+.uk-h5,
+.uk-h6,
 .uk-heading-small,
 .uk-heading-medium,
 .uk-heading-large,
@@ -374,37 +356,37 @@ h6, .uk-h6,
  * Sizes
  */
 
-h1, .uk-h1 {
+.uk-h1 {
     font-size: @base-h1-font-size;
     line-height: @base-h1-line-height;
     .hook-base-h1;
 }
 
-h2, .uk-h2 {
+.uk-h2 {
     font-size: @base-h2-font-size;
     line-height: @base-h2-line-height;
     .hook-base-h2;
 }
 
-h3, .uk-h3 {
+.uk-h3 {
     font-size: @base-h3-font-size;
     line-height: @base-h3-line-height;
     .hook-base-h3;
 }
 
-h4, .uk-h4 {
+.uk-h4 {
     font-size: @base-h4-font-size;
     line-height: @base-h4-line-height;
     .hook-base-h4;
 }
 
-h5, .uk-h5 {
+.uk-h5 {
     font-size: @base-h5-font-size;
     line-height: @base-h5-line-height;
     .hook-base-h5;
 }
 
-h6, .uk-h6 {
+.uk-h6 {
     font-size: @base-h6-font-size;
     line-height: @base-h6-line-height;
     .hook-base-h6;
@@ -413,8 +395,8 @@ h6, .uk-h6 {
 /* Tablet landscape and bigger */
 @media (min-width: @breakpoint-medium) {
 
-    h1, .uk-h1 { font-size: @base-h1-font-size-m; }
-    h2, .uk-h2 { font-size: @base-h2-font-size-m; }
+    .uk-h1 { font-size: @base-h1-font-size-m; }
+    .uk-h2 { font-size: @base-h2-font-size-m; }
 
 }
 

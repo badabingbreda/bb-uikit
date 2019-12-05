@@ -157,6 +157,17 @@
 
 .uk-lightbox-toolbar > * { color: @lightbox-toolbar-color; }
 
+/*
+ * Remove background color on focus and hover
+ */
+.uk-lightbox-toolbar button.uk-close:hover,
+.uk-lightbox-toolbar button.uk-close:focus,
+.uk-lightbox-toolbar button.uk-close-large:hover,
+.uk-lightbox-toolbar button.uk-close-large:focus {
+    position:relative;
+    background:none;
+    border:none;
+}
 
 /* Toolbar Icon (Close)
  ========================================================================== */

@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Beaver Builder UI Kit
  * Plugin URI: http://www.badabing.nl
- * Description: UIkit 3.1.6 for Beaver Builder with AlekVolsk's width-ex for extended col support (up to 30)
- * Version: 1.3.2
+ * Description: UIkit 3.2.2 for Beaver Builder with AlekVolsk's width-ex for extended col support (up to 30) and working row background shapes
+ * Version: 1.4.1
  * Author: BadabingBreda
  * Domain Path: languages/
  * Text Domain: bb-ui-kit
@@ -11,7 +11,7 @@
  */
 
 define( 'BBUIKIT_URL' 		, plugins_url( '/', __FILE__ ) );
-define( 'BBUIKIT_VERSION' 		, '1.3.2' );
+define( 'BBUIKIT_VERSION' 		, '1.4.1' );
 
 
 add_action( 'wp_enqueue_scripts', 'beaver_ui_kit_scripts_styles', 99, 1 );
@@ -19,6 +19,7 @@ add_action( 'wp_enqueue_scripts', 'beaver_ui_kit_scripts_styles', 99, 1 );
 
 add_action( 'plugins_loaded' , 'check_toolbox_blocks' );
 
+/** Enqueue this script on backend when Toolbox Blocks class exists */
 function check_toolbox_blocks() {
 	if ( class_exists('Toolbox_Blocks') ) add_action( 'admin_enqueue_scripts', 'beaver_ui_kit_scripts_styles', 99, 1 );
 }

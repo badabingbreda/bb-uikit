@@ -1,0 +1,12 @@
+.fl-col.uk-flex .fl-col-content {
+  display: flex;
+}
+.fl-col.uk-flex-inline .fl-col-content {
+  display: inline-flex;
+}
+.fl-col .uk-flex::before .fl-col-content,
+.fl-col .uk-flex::after .fl-col-content,
+.fl-col .uk-flex-inline::before .fl-col-content,
+.fl-col .uk-flex-inline::after .fl-col-content {
+  display: none;
+}
