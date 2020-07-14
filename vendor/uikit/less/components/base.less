@@ -42,7 +42,7 @@
 @base-heading-color:                            @global-emphasis-color;
 @base-heading-text-transform:                   none;
 @base-heading-margin-top:                       @global-medium-margin;
-@base-h1-font-size-m:                           @global-xxlarge-font-size;
+@base-h1-font-size-m:                           @global-2xlarge-font-size;
 @base-h1-font-size:                             @base-h1-font-size-m * 0.85;
 @base-h1-line-height:                           1.2;
 @base-h2-font-size-m:                           @global-xlarge-font-size;
@@ -93,6 +93,15 @@
 
 html {
     /* 1 */
+    // font-family: @base-body-font-family;
+    // font-size: @base-body-font-size;
+    // font-weight: @base-body-font-weight;
+    // line-height: @base-body-line-height;
+    /* 2 */
+    -webkit-text-size-adjust: 100%;
+    /* 3 */
+    // background: @base-body-background;
+    // color: @base-body-color;
     .hook-base-body;
 }
 
@@ -110,10 +119,31 @@ body { margin: 0; }
  * Remove the outline on focused links when they are also active or hovered
  */
 
+a:active,
+a:hover {
+            //outline: none;
+        }
+
 /*
  * Style
  */
 
+a,
+.uk-link {
+    // color: @base-link-color;
+    // text-decoration: @base-link-text-decoration;
+    // cursor: pointer;
+    // .hook-base-link;
+}
+
+a:hover,
+.uk-link:hover,
+.uk-link-toggle:hover .uk-link,
+.uk-link-toggle:focus .uk-link {
+    // color: @base-link-hover-color;
+    // text-decoration: @base-link-hover-text-decoration;
+    // .hook-base-link-hover;
+}
 
 
 /* Text-level semantics
@@ -147,8 +177,12 @@ strong { font-weight: @base-strong-font-weight; }
 :not(pre) > code,
 :not(pre) > kbd,
 :not(pre) > samp {
+    /* 1 */
+    // font-family: @base-code-font-family;
     /* 2 */
-    font-size: @base-code-font-size;
+    // font-size: @base-code-font-size;
+    /* 3 */
+    // color: @base-code-color;
     white-space: nowrap;
     .hook-base-code;
 }
@@ -218,13 +252,7 @@ canvas,
 iframe,
 img,
 svg,
-video {
-    vertical-align: middle;
-
-    .fl-builder-edit div:not(.fl-page) & {
-        vertical-align: initial;
-    }
-}
+video { vertical-align: middle; }
 
 /*
  * 1. Add responsiveness.
@@ -247,20 +275,23 @@ video {
 /* 4 */
 @supports (display: block) {
 
-    /* sets overall svg height to auto*/
-    svg {
-        height: auto;
-        box-sizing: border-box;
+   svg {
+        // max-width: 100%;
+        // height: auto;
+        // box-sizing: border-box;
+    }
 
         /**
          * for beaver builder row shapes and uabb's row shapes/effects svg's
          * we set svg under the wrap that aren't part of the fl-row-content-wrap to fit-content
+         * also exclude fl-builder-shape-layer from being affected
          */
+        /*
         .fl-row-content-wrap > div:not(.fl-row-content) & {
             height: fit-content;
         }
+        */
 
-    }
 }
 
 /*

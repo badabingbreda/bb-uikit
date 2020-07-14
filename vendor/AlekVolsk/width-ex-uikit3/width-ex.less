@@ -1,0 +1,497 @@
+// Name:         Width extended
+// Description:  Utilities for widths, *-7 .. *-30 cols
+//
+// Component:   `uk-child-width-*`
+//              `uk-width-*`
+//              `uk-pull-*`
+//              `uk-push-*`
+//
+// ========================================================================
+
+/* Copy of variables from "variables.less"
+@deprecated: true;
+
+@breakpoint-small:                             640px;  // Phone landscape
+@breakpoint-medium:                            960px;  // Tablet Landscape
+@breakpoint-large:                             1200px; // Desktop
+@breakpoint-xlarge:                            1600px; // Large Screens
+
+@breakpoint-xsmall-max:                        (@breakpoint-small - 1);
+@breakpoint-small-max:                         (@breakpoint-medium - 1);
+@breakpoint-medium-max:                        (@breakpoint-large - 1);
+@breakpoint-large-max:                         (@breakpoint-xlarge - 1);
+
+@width-small-width:                            150px;
+@width-medium-width:                           300px;
+@width-large-width:                            450px;
+@width-xlarge-width:                           600px;
+@width-2xlarge-width:                          750px;
+*/
+
+@breakpoint-xsmall:                            480px;  // Old phone landscape
+@breakpoint-xxsmall-max:                       (@breakpoint-xsmall - 1);
+
+
+/* ========================================================================
+   Component: Width extended
+ ========================================================================== */
+
+@col-7:                                         true;
+@col-8:                                         true;
+@col-9:                                         true;
+@col-10:                                        true;
+@col-11:                                        true;
+@col-12:                                        true;
+@col-13:                                        true;
+@col-14:                                        true;
+@col-15:                                        true;
+@col-16:                                        true;
+@col-17:                                        true;
+@col-18:                                        true;
+@col-19:                                        true;
+@col-20:                                        true;
+@col-21:                                        true;
+@col-22:                                        true;
+@col-23:                                        true;
+@col-24:                                        true;
+@col-25:                                        true;
+@col-26:                                        true;
+@col-27:                                        true;
+@col-28:                                        true;
+@col-29:                                        true;
+@col-30:                                        true;
+
+@pull:                                          true;
+@push:                                          true;
+
+
+/* Mixins
+ ========================================================================== */
+
+.getProperty(@col: 1, @cols: 1, @val: ~'width', @m: false)
+{
+	@v: floor( @col * (100% / @cols) * 1000 ) / 1000;
+	& when not (@m) { @{val}: @v; }
+	& when (@m) { @{val}: -@v; }
+}
+
+.generate-column(@cl, @sfx: none, @i: 2) when (@i =< 30) {
+	
+	@col-2: true;
+	@col-3: true;
+	@col-4: true;
+	@col-5: true;
+	@col-6: true;
+	
+	@col: 'col-@{i}';
+
+	& when not (@sfx = none) {
+		& when (@@col = true) {
+			@{cl}@{i}@{sfx} > * { .getProperty(1, @i); }
+		}
+	}
+	
+	& when (@sfx = none) {
+		& when (@@col = true) {
+			@{cl}@{i} > * { .getProperty(1, @i); }
+		}
+	}
+
+	.generate-column(@cl, @sfx, @i + 1);
+}
+
+.getCols(@cl, @c, @sfx: none, @val: ~'width', @m: false, @i: 1) when (@i < @c)
+{
+	& when not (@sfx = none) {
+		@{cl}@{i}-@{c}@{sfx} { .getProperty(@i, @c, @val, @m); }
+	}
+	
+	& when (@sfx = none) {
+		@{cl}@{i}-@{c} { .getProperty(@i, @c, @val, @m); }
+	}
+	
+	.getCols(@cl, @c, @sfx, @val, @m, @i + 1);
+}
+
+.generate-columns(@cl, @sfx: none, @val: ~'width', @m: false, @i: 2) when (@i =< 30) {
+
+	@col-2: true;
+	@col-3: true;
+	@col-4: true;
+	@col-5: true;
+	@col-6: true;
+	
+	@col: 'col-@{i}';
+
+	& when (@@col = true) {
+		.getCols(@cl, @i, @sfx, @val, @m);
+	}
+
+	.generate-columns(@cl, @sfx, @val, @m, @i + 1);
+}
+
+
+/* Equal child widths
+========================================================================== */
+
+[class*='uk-child-width'] > *
+{
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.uk-child-width-auto > * { width: auto; }
+.uk-child-width-expand > * { width: 1px; }
+.uk-child-width-expand > :not([class*='uk-width'])
+{
+    flex: 1;
+    min-width: 0;
+    flex-basis: 1px;
+}
+
+.uk-child-width-1-1 > * { width: 100%; }
+.generate-column(~'.uk-child-width-1-');
+
+/* Old phone landscape and bigger */
+@media (min-width: @breakpoint-xsmall)
+{
+
+	.uk-child-width-auto\@xs > * { width: auto; }
+	.uk-child-width-expand\@xs > * { width: 1px; }
+	.uk-child-width-expand\@xs > :not([class*='uk-width'])
+	{
+		flex: 1;
+		min-width: 0;
+		flex-basis: 1px;
+	}
+	
+	.uk-child-width-1-1\@xs > * { width: 100%; }
+	.generate-column(~'.uk-child-width-1-', ~'\@xs');
+	
+}
+
+/* Phone landscape and bigger */
+@media (min-width: @breakpoint-small)
+{
+
+	.uk-child-width-auto\@s > * { width: auto; }
+	.uk-child-width-expand\@s > * { width: 1px; }
+	.uk-child-width-expand\@s > :not([class*='uk-width'])
+	{
+		flex: 1;
+		min-width: 0;
+		flex-basis: 1px;
+	}
+	
+	.uk-child-width-1-1\@s > * { width: 100%; }
+	.generate-column(~'.uk-child-width-1-', ~'\@s');
+
+}
+
+/* Tablet landscape and bigger */
+@media (min-width: @breakpoint-medium)
+{
+
+	.uk-child-width-auto\@m > * { width: auto; }
+	.uk-child-width-expand\@m > * { width: 1px; }
+	.uk-child-width-expand\@m > :not([class*='uk-width'])
+	{
+		flex: 1;
+		min-width: 0;
+		flex-basis: 1px;
+	}
+	
+	.uk-child-width-1-1\@m > * { width: 100%; }
+	.generate-column(~'.uk-child-width-1-', ~'\@m');
+
+}
+
+/* Desktop and bigger */
+@media (min-width: @breakpoint-large)
+{
+
+	.uk-child-width-auto\@l > * { width: auto; }
+	.uk-child-width-expand\@l > * { width: 1px; }
+	.uk-child-width-expand\@l > :not([class*='uk-width'])
+	{
+		flex: 1;
+		min-width: 0;
+		flex-basis: 1px;
+	}
+	
+	.uk-child-width-1-1\@l > * { width: 100%; }
+	.generate-column(~'.uk-child-width-1-', ~'\@l');
+
+}
+
+/* Large screen and bigger */
+@media (min-width: @breakpoint-xlarge)
+{
+
+	.uk-child-width-auto\@xl > * { width: auto; }
+	.uk-child-width-expand\@xl > * { width: 1px; }
+	.uk-child-width-expand\@xl > :not([class*='uk-width'])
+	{
+		flex: 1;
+		min-width: 0;
+		flex-basis: 1px;
+	}
+	
+	.uk-child-width-1-1\@xl > * { width: 100%; }
+	.generate-column(~'.uk-child-width-1-', ~'\@xl');
+
+}
+
+
+/* Single Widths
+ ========================================================================== */
+
+[class*='uk-width']
+{
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+
+.uk-width-small { width: @width-small-width; }
+.uk-width-medium { width: @width-medium-width; }
+.uk-width-large { width: @width-large-width; }
+.uk-width-xlarge { width: @width-xlarge-width; }
+.uk-width-2xlarge { width: @width-2xlarge-width; }
+.uk-width-xxlarge when (@deprecated = true) { width: @width-2xlarge-width; }
+
+.uk-width-auto { width: auto; }
+.uk-width-expand
+{
+    width: 1px;
+    flex: 1;
+    min-width: 0;
+    flex-basis: 1px;
+}
+
+.uk-width-1-1 { width: 100%; }
+.generate-columns(~'.uk-width-');
+
+/* Old phone landscape and bigger */
+@media (min-width: @breakpoint-xsmall)
+{
+
+	.uk-width-small\@xs { width: @width-small-width; }
+	.uk-width-medium\@xs { width: @width-medium-width; }
+	.uk-width-large\@xs { width: @width-large-width; }
+	.uk-width-xlarge\@xs { width: @width-xlarge-width; }
+	.uk-width-2xlarge\@xs { width: @width-2xlarge-width; }
+	.uk-width-xxlarge\@xs when (@deprecated = true) { width: @width-2xlarge-width; }
+	
+	.uk-width-auto\@xs { width: auto; }
+	.uk-width-expand\@xs
+	{
+		width: 1px;
+		flex: 1;
+		min-width: 0;
+		flex-basis: 1px;
+	}
+	
+	.uk-width-1-1\@xs { width: 100%; }
+	.generate-columns(~'.uk-width-', ~'\@xs');
+
+}
+
+/* Phone landscape and bigger */
+@media (min-width: @breakpoint-small)
+{
+
+	.uk-width-small\@s { width: @width-small-width; }
+	.uk-width-medium\@s { width: @width-medium-width; }
+	.uk-width-large\@s { width: @width-large-width; }
+	.uk-width-xlarge\@s { width: @width-xlarge-width; }
+	.uk-width-2xlarge\@s { width: @width-2xlarge-width; }
+	.uk-width-xxlarge\@s when (@deprecated = true) { width: @width-2xlarge-width; }
+	
+	.uk-width-auto\@s { width: auto; }
+	.uk-width-expand\@s
+	{
+		width: 1px;
+		flex: 1;
+		min-width: 0;
+		flex-basis: 1px;
+	}
+	
+	.uk-width-1-1\@s { width: 100%; }
+	.generate-columns(~'.uk-width-', ~'\@s');
+
+}
+
+/* Tablet landscape and bigger */
+@media (min-width: @breakpoint-medium)
+{
+
+	.uk-width-small\@m { width: @width-small-width; }
+	.uk-width-medium\@m { width: @width-medium-width; }
+	.uk-width-large\@m { width: @width-large-width; }
+	.uk-width-xlarge\@m { width: @width-xlarge-width; }
+	.uk-width-2xlarge\@m { width: @width-2xlarge-width; }
+	.uk-width-xxlarge\@m when (@deprecated = true) { width: @width-2xlarge-width; }
+	
+	.uk-width-auto\@m { width: auto; }
+	.uk-width-expand\@m
+	{
+		width: 1px;
+		flex: 1;
+		min-width: 0;
+		flex-basis: 1px;
+	}
+	
+	.uk-width-1-1\@m { width: 100%; }
+	.generate-columns(~'.uk-width-', ~'\@m');
+
+}
+
+/* Desktop and bigger */
+@media (min-width: @breakpoint-large)
+{
+
+	.uk-width-small\@l { width: @width-small-width; }
+	.uk-width-medium\@l { width: @width-medium-width; }
+	.uk-width-large\@l { width: @width-large-width; }
+	.uk-width-xlarge\@l { width: @width-xlarge-width; }
+	.uk-width-2xlarge\@l { width: @width-2xlarge-width; }
+	.uk-width-xxlarge\@l when (@deprecated = true) { width: @width-2xlarge-width; }
+	
+	.uk-width-auto\@l { width: auto; }
+	.uk-width-expand\@l
+	{
+		width: 1px;
+		flex: 1;
+		min-width: 0;
+		flex-basis: 1px;
+	}
+	
+	.uk-width-1-1\@l { width: 100%; }
+	.generate-columns(~'.uk-width-', ~'\@l');
+
+}
+
+/* Large screen and bigger */
+@media (min-width: @breakpoint-xlarge)
+{
+
+	.uk-width-small\@xl { width: @width-small-width; }
+	.uk-width-medium\@xl { width: @width-medium-width; }
+	.uk-width-large\@xl { width: @width-large-width; }
+	.uk-width-xlarge\@xl { width: @width-xlarge-width; }
+	.uk-width-2xlarge\@xl { width: @width-2xlarge-width; }
+	.uk-width-xxlarge\@xl when (@deprecated = true) { width: @width-2xlarge-width; }
+	
+	.uk-width-auto\@xl { width: auto; }
+	.uk-width-expand\@xl
+	{
+		width: 1px;
+		flex: 1;
+		min-width: 0;
+		flex-basis: 1px;
+	}
+	
+	.uk-width-1-1\@xl { width: 100%; }
+	.generate-columns(~'.uk-width-', ~'\@xl');
+
+}
+
+
+/* Sub-object: `uk-push-*` and `uk-pull-*`
+ ========================================================================== */
+
+& when (@push  = true) {
+	
+	[class*="uk-push-"]
+	{
+		position: relative;
+	}
+	.generate-columns(~'.uk-push-', none, ~'left');
+	
+}
+
+& when (@pull  = true) {
+	
+	[class*="uk-pull-"]
+	{
+		position: relative;
+	}
+	.generate-columns(~'.uk-pull-', none, ~'left', true);
+	
+}
+	
+/* Old phone landscape and bigger */
+@media (min-width: @breakpoint-xsmall) {
+	
+	& when (@push  = true) {
+		.generate-columns(~'.uk-push-', ~'\@xs', ~'left');
+	}
+	
+	& when (@pull  = true) {
+		.generate-columns(~'.uk-pull-', ~'\@xs', ~'left', true);
+	}
+	
+}
+	
+/* Phone landscape and bigger */
+@media (min-width: @breakpoint-small) {
+	
+	& when (@push  = true) {
+		.generate-columns(~'.uk-push-', ~'\@s', ~'left');
+	}
+	
+	& when (@pull  = true) {
+		.generate-columns(~'.uk-pull-', ~'\@s', ~'left', true);
+	}
+	
+}
+
+/* Tablet landscape and bigger */
+@media (min-width: @breakpoint-medium) {
+
+	& when (@push  = true) {
+		.generate-columns(~'.uk-push-', ~'\@m', ~'left');
+	}
+
+	& when (@pull  = true) {
+		.generate-columns(~'.uk-pull-', ~'\@m', ~'left', true);
+	}
+
+}
+
+/* Desktop and bigger */
+@media (min-width: @breakpoint-large) {
+
+	& when (@push  = true) {
+		.generate-columns(~'.uk-push-', ~'\@l', ~'left');
+	}
+
+	& when (@pull  = true) {
+		.generate-columns(~'.uk-pull-', ~'\@l', ~'left', true);
+	}
+
+}
+
+/* Large screen and bigger */
+@media (min-width: @breakpoint-xlarge) {
+
+	& when (@push  = true) {
+		.generate-columns(~'.uk-push-', ~'\@xl', ~'left');
+	}
+
+	& when (@pull  = true) {
+		.generate-columns(~'.uk-pull-', ~'\@xl', ~'left', true);
+	}
+
+}
+
+
+// Hooks
+// ========================================================================
+
+.hook-width-misc;
+.hook-width-misc() {}
+
+.hook-width-ex-misc;
+.hook-width-ex-misc() {}

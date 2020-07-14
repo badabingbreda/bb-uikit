@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Beaver Builder UI Kit
  * Plugin URI: http://www.badabing.nl
- * Description: UIkit 3.2.2 for Beaver Builder with AlekVolsk's width-ex for extended col support (up to 30) and working row background shapes
- * Version: 1.4.1
+ * Description: UIkit 3.5.4 for Beaver Builder with AlekVolsk's width-ex for extended col support (up to 30), grid-ex and beaver-col-flex
+ * Version: 1.5.0
  * Author: BadabingBreda
  * Domain Path: languages/
  * Text Domain: bb-ui-kit
@@ -11,7 +11,7 @@
  */
 
 define( 'BBUIKIT_URL' 		, plugins_url( '/', __FILE__ ) );
-define( 'BBUIKIT_VERSION' 		, '1.4.1' );
+define( 'BBUIKIT_VERSION' 		, '1.5.0' );
 
 
 add_action( 'wp_enqueue_scripts', 'beaver_ui_kit_scripts_styles', 99, 1 );

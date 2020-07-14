@@ -15,6 +15,11 @@ Don't get yourself fooled by the size of this plugin. The current plugin has all
 
 **Changelog:**
 
+v.1.5.0 - (July 14th, 2020)
+Updated to UIkit v.3.5.4
+Updated AlexVolsk uk-width-ex to latest
+Added AlexVolsk uk-grid-ex
+
 v.1.4.1 - (December 5th, 2019)
 Fixed row background-shapes and UABB row-effect not showing the SVG shapes correctly.
 

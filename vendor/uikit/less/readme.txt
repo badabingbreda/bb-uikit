@@ -103,18 +103,24 @@ video {
 /* 4 */
 @supports (display: block) {
 
-    /* sets overall svg height to auto*/
+    /* remove svg setting properties */
+
     svg {
+        /*
         height: auto;
         box-sizing: border-box;
+        */
 
         /**
          * for beaver builder row shapes and uabb's row shapes/effects svg's
          * we set svg under the wrap that aren't part of the fl-row-content-wrap to fit-content
+         * also exclude fl-builder-shape-layer from being affected
          */
+        /*
         .fl-row-content-wrap > div:not(.fl-row-content) & {
             height: fit-content;
         }
+        */
 
     }
 }
@@ -133,6 +139,17 @@ video {
     position: absolute;         /* THIS LINE */
     .hook-close-hover;
 }
+
+/********************************************************************************************
+ * ?? 3.5.4 gone?
+ * components/navbar.less ADD LINE
+ * add position: absolute;
+ ********************************************************************************************/
+/* Close */
+.uk-navbar-dropdown-close.uk-icon.uk-close {
+    position: relative;
+}
+
 
 /********************************************************************************************
  * components/modal.less ADD FOLLOWING LINES ~ line # 305
